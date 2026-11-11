@@ -1,0 +1,677 @@
+
+/* ============================
+   RecipeForm 전체 레이아웃
+============================ */
+
+.recipe-form {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  background: #ffffff;
+  color: #242424;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.recipe-form *,
+.recipe-form *::before,
+.recipe-form *::after {
+  box-sizing: border-box;
+}
+
+.recipe-form button,
+.recipe-form input,
+.recipe-form textarea {
+  font: inherit;
+}
+
+.recipe-form button {
+  cursor: pointer;
+}
+
+.recipe-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.recipe-form input,
+.recipe-form textarea {
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  outline: none;
+  background: #fff;
+  color: #242424;
+}
+
+.recipe-form input:focus,
+.recipe-form textarea:focus {
+  border-color: #dd653b;
+}
+
+/* ============================
+   상단 제목
+============================ */
+
+.recipe-form__heading {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  margin-bottom: 24px;
+}
+
+.recipe-form__heading h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.recipe-form__heading span {
+  color: #dc633c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ============================
+   대표 사진 / 제목 / 소개
+============================ */
+
+.recipe-form__intro-row {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.recipe-form__cover {
+  display: flex;
+  flex: 0 0 120px;
+  width: 120px;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+  background: #f3f3f3;
+  border: 1px dashed #cccccc;
+  border-radius: 5px;
+  color: #777;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  font-size: 12px;
+}
+
+.recipe-form__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-form__cover input,
+.recipe-form__step-photo input {
+  display: none;
+}
+
+.recipe-form__intro-fields {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.recipe-form__intro-fields label {
+  font-size: 13px;
+}
+
+.recipe-form__intro-fields input {
+  width: 100%;
+  min-height: 35px;
+  padding: 7px 10px;
+}
+
+.recipe-form__optional {
+  color: #dd653b;
+  font-size: 12px !important;
+}
+
+/* ============================
+   조리 시간 / 인분 / 난이도
+============================ */
+
+.recipe-form__two-cols {
+  display: grid;
+  grid-template-columns: 150px 150px minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.recipe-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.recipe-form__field label,
+.recipe-form__label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.recipe-form__number {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+}
+
+.recipe-form__number input {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  padding: 6px 8px;
+  border: none;
+}
+
+.recipe-form__number span {
+  padding: 0 10px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.recipe-form__counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+}
+
+.recipe-form__counter button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+}
+
+.recipe-form__counter input {
+  width: 45px;
+  height: 30px;
+  border: none;
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.recipe-form__counter input::-webkit-inner-spin-button,
+.recipe-form__counter input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ============================
+   선택 버튼 (난이도/종류/도구)
+============================ */
+
+.recipe-form__pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.recipe-form__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  padding: 5px 15px;
+  background: #fff;
+  color: #555;
+  border: 1px solid #d4d4d4;
+  border-radius: 30px;
+  font-size: 13px;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.recipe-form__pill:hover {
+  border-color: #555;
+}
+
+.recipe-form__pill.is-active {
+  background: #252525;
+  border-color: #252525;
+  color: #fff;
+}
+
+.recipe-form__pill.is-active:hover {
+  background: #444;
+}
+
+/* ============================
+   요리 종류
+============================ */
+
+.recipe-form__horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.recipe-form__horizontal .recipe-form__label {
+  flex-shrink: 0;
+  min-width: 75px;
+}
+
+/* ============================
+   공통 섹션
+============================ */
+
+.recipe-form__section {
+  margin-bottom: 23px;
+}
+
+.recipe-form__section h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ============================
+   재료 검색 / 추가
+============================ */
+
+.recipe-form__ingredient-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px 80px;
+  gap: 8px;
+  align-items: start;
+}
+
+.recipe-form__ingredient-entry input {
+  width: 100%;
+  height: 36px;
+  padding: 7px 10px;
+}
+
+.recipe-form__search-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.recipe-form__search-results {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 3px);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 5px 12px rgb(0 0 0 / 8%);
+}
+
+.recipe-form__search-results button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  text-align: left;
+  font-size: 13px;
+}
+
+.recipe-form__search-results button:hover {
+  background: #f6f6f6;
+}
+
+.recipe-form__search-results p {
+  margin: 0;
+  padding: 12px;
+  color: #777;
+  font-size: 13px;
+}
+
+.recipe-form__add {
+  min-height: 36px;
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.recipe-form__add:hover {
+  background: #f6f6f6;
+}
+
+/* ============================
+   선택된 재료 태그
+============================ */
+
+.recipe-form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.recipe-form__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 31px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #252525;
+  color: #fff;
+  font-size: 12px;
+}
+
+.recipe-form__chip span {
+  white-space: nowrap;
+}
+
+.recipe-form__chip input {
+  width: 65px;
+  min-width: 0;
+  padding: 2px 3px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #888;
+  border-radius: 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.recipe-form__chip input:focus {
+  border-color: #fff;
+}
+
+.recipe-form__chip button {
+  padding: 0 2px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  font-size: 17px;
+  line-height: 1;
+}
+
+/* ============================
+   조리 도구
+============================ */
+
+.recipe-form__tools {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.recipe-form__tools h3 {
+  flex-shrink: 0;
+  margin: 6px 0 0;
+}
+
+.recipe-form__tools .recipe-form__pills {
+  flex: 1;
+}
+
+/* ============================
+   만드는 법
+============================ */
+
+.recipe-form__section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.recipe-form__section-heading h3 {
+  margin: 0;
+}
+
+.recipe-form__section-heading .recipe-form__add {
+  min-height: 30px;
+  font-size: 12px;
+}
+
+.recipe-form__step {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 9px;
+}
+
+.recipe-form__step-num {
+  display: flex;
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #242424;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.recipe-form__step textarea {
+  flex: 1;
+  min-width: 0;
+  height: 65px;
+  padding: 10px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.recipe-form__step-photo {
+  display: flex;
+  flex: 0 0 85px;
+  width: 85px;
+  height: 65px;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #ccc;
+  border-radius: 3px;
+  background: #f3f3f3;
+  color: #777;
+  font-size: 12px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.recipe-form__step-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-form__step-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.recipe-form__step-actions button {
+  padding: 4px;
+  background: transparent;
+  border: none;
+  color: #777;
+  font-size: 17px;
+}
+
+.recipe-form__step-actions button:hover:not(:disabled) {
+  color: #dd653b;
+}
+
+/* ============================
+   오류 메시지
+============================ */
+
+.recipe-form__error {
+  padding: 10px 12px;
+  background: #fff5f1;
+  border: 1px solid #f0c7b7;
+  border-radius: 5px;
+  color: #c64b2b;
+  font-size: 13px;
+}
+
+/* ============================
+   하단 버튼
+============================ */
+
+.recipe-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid #eee;
+}
+
+.recipe-form__footer > span {
+  color: #777;
+  font-size: 12px;
+}
+
+.recipe-form__footer > div {
+  display: flex;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.recipe-form__cancel,
+.recipe-form__submit {
+  min-width: 105px;
+  height: 38px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.recipe-form__cancel {
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  color: #444;
+}
+
+.recipe-form__cancel:hover {
+  background: #f6f6f6;
+}
+
+.recipe-form__submit {
+  background: #db663f;
+  border: 1px solid #db663f;
+  color: #fff;
+  font-weight: 600;
+}
+
+.recipe-form__submit:hover:not(:disabled) {
+  background: #c95430;
+}
+
+/* ============================
+   반응형 디자인
+============================ */
+
+@media (max-width: 768px) {
+  .recipe-form {
+    padding: 20px 16px;
+  }
+
+  .recipe-form__two-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recipe-form__two-cols .recipe-form__field:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .recipe-form__ingredient-entry {
+    grid-template-columns: minmax(0, 1fr) 120px 65px;
+  }
+
+  .recipe-form__horizontal,
+  .recipe-form__tools {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .recipe-form__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .recipe-form__footer > div {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-form__heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .recipe-form__cover {
+    flex-basis: 95px;
+    width: 95px;
+    height: 110px;
+  }
+
+  .recipe-form__intro-row {
+    gap: 10px;
+  }
+
+  .recipe-form__ingredient-entry {
+    grid-template-columns: minmax(0, 1fr) 70px;
+  }
+
+  .recipe-form__search-wrap {
+    grid-column: 1 / -1;
+  }
+
+  .recipe-form__step {
+    flex-wrap: wrap;
+  }
+
+  .recipe-form__step textarea {
+    flex-basis: calc(100% - 40px);
+  }
+
+  .recipe-form__step-photo {
+    margin-left: 35px;
+  }
+
+  .recipe-form__footer > div {
+    width: 100%;
+  }
+
+  .recipe-form__cancel,
+  .recipe-form__submit {
+    flex: 1;
+    min-width: 0;
+  }
+}
