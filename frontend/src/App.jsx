@@ -19,6 +19,7 @@ import BoardListPage from "./pages/BoardListPage";
 import BoardDetailPage from "./pages/BoardDetailPage";
 import BoardFormPage from "./pages/BoardFormPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";// resetpasswordpage추가
 
 // 1. 공통 레이아웃
 // AuthProvider 안에서 useNavigate를 쓰기 때문에 라우터 안쪽(여기)에서 감싼다. (mini와 같음)
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "login", element: <LoginPage /> },
       { path: "signup", element: <SignUpPage /> },
+      { path: "password-reset", element: <ResetPasswordPage /> }, // resetpasswordpage추가
       { path: "mypage", element: <ProtectedRoute><MyPage /></ProtectedRoute> },
       { path: "fridge", element: <ProtectedRoute><FridgePage /></ProtectedRoute> },
 

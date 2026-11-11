@@ -28,7 +28,11 @@ export const AuthProvider = ({ children }) => {
     // const response = await api.post("/auth/login", { email, password });
     // 성공하면 setUser(response.data), setIsAuthenticated(true), verifyJWT()
     console.log("login", email, password);
-    return false;
+
+    
+    setUser(mockUser); //추가: 로그인 가능하도록
+    setIsAuthenticated(true); //추가: 로그인 가능하도록
+    return true; //추가: 로그인 가능하도록
   };
 
   // 회원가입: 입력값을 먼저 확인하고, 성공하면 true
@@ -52,7 +56,7 @@ export const AuthProvider = ({ children }) => {
     setError("");
     // TODO 백엔드 시작 시 추가
     // const response = await api.post("/auth/signup", { email, nickname, password });
-    return false;
+    return true; //추가: 회원가입 가능하도록
   };
 
   // 로그아웃: 로그인 정보를 지우고 홈으로

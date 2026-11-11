@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import { useAuth } from '../../contexts/AuthContext';
 import { IMAGE_MAX_MB, IMAGE_TYPES, NICKNAME_MAX, NICKNAME_MIN } from '../../constants';
 
 function ProfileEditor({ user }) {
-  const { updateProfile } = useAuth();
   const [formData, setFormData] = useState({
     nickname: user?.nickname ?? '',
     profile_image_url: user?.profile_image_url ?? null,
@@ -64,7 +61,7 @@ function ProfileEditor({ user }) {
     setMessage('');
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (isReading || !user) return;
     const nickname = formData.nickname.trim();
@@ -75,20 +72,8 @@ function ProfileEditor({ user }) {
 
     setError('');
     setMessage('');
-    try {
-      const { data: profile } = await axios.patch('/auth/me', {
-        ...formData,
-        nickname,
-      }, { withCredentials: true });
-      updateProfile(profile);
-      setFormData({
-        nickname: profile.nickname,
-        profile_image_url: profile.profile_image_url ?? null,
-      });
-      setMessage('프로필을 변경했습니다.');
-    } catch {
-      setError('프로필을 저장하지 못했습니다. 다시 시도해 주세요.');
-    }
+    // TODO: DB 연결 후 프로필 저장 요청 및 사용자 정보 갱신
+    window.alert('프로필 저장 기능은 DB 연결 후 제공될 예정입니다. 현재 변경 내용은 저장되지 않습니다.');
   };
 
   const handleCancel = () => {
@@ -107,7 +92,7 @@ function ProfileEditor({ user }) {
   }
 
   return (
-    <section>
+    <section className="mypage-profile">
       <h2>프로필 수정</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -119,7 +104,8 @@ function ProfileEditor({ user }) {
             aria-label="프로필 사진 선택" onChange={handleImageChange} hidden />
           <button type="button" onClick={() => fileInputRef.current.click()}>사진 변경</button>
           <button type="button" onClick={handleImageDelete}
-            disabled={!formData.profile_image_url && !isReading}>사진 삭제</button>
+            disabled={!formData.profile_image_url && !isReading}>사진 제거</button>
+          <p>사진은 미리보기로만 표시됩니다. 프로필 저장 기능은 추후 제공됩니다.</p>
           {isReading && <p role="status">사진을 불러오는 중입니다.</p>}
         </div>
 

@@ -13,16 +13,16 @@ function MypageSidebar({ activeMenu, onMenuChange, onLogout }) {
 
       <button
         type="button"
-        onClick={() => onMenuChange('liked')}
-        disabled={activeMenu === 'liked'}>
-        좋아요한 요리
+        onClick={() => onMenuChange('recipe_liked')}
+        disabled={activeMenu === 'recipe_liked'}>
+        좋아요한 레시피
       </button>
 
       <button
         type="button"
-        onClick={() => onMenuChange('bookmarked')}
-        disabled={activeMenu === 'bookmarked'}>
-        북마크한 요리
+        onClick={() => onMenuChange('recipe_bookmarked')}
+        disabled={activeMenu === 'recipe_bookmarked'}>
+        북마크한 레시피
       </button>
 
       <button
@@ -44,6 +44,13 @@ function MypageSidebar({ activeMenu, onMenuChange, onLogout }) {
         onClick={() => onMenuChange('comments')}
         disabled={activeMenu === 'comments'}>
         내 댓글
+      </button>
+
+      <button
+        type="button"
+        onClick={() => onMenuChange('posts_liked')}
+        disabled={activeMenu === 'posts_liked'}>
+        좋아요한 게시글
       </button>
 
       <hr />
