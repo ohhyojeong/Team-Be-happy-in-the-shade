@@ -90,6 +90,11 @@ export default function SignUpPage() {
   const sendEmailCode = async () => {
     const email = form.email.trim();
 
+    // 아이디 중복 확인 추가 
+    if (!checkedId || checkedId !== form.login_id.trim()) {
+      setEmailMessage('아이디 중복 확인을 먼저 진행해 주세요.');
+      return;
+    }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailMessage('올바른 이메일을 입력하세요.');
       return;
@@ -171,7 +176,8 @@ export default function SignUpPage() {
   const sideButton = "h-12 flex-none rounded-pill bg-gray-100 px-4 text-sm font-bold hover:bg-gray-200 disabled:opacity-40";
   // 메시지가 '완료' · '가능'이면 초록, 아니면 흐린 글씨
   const messageClass = (message) =>
-    `text-sm ${/완료|사용 가능/.test(message) ? "text-have font-bold" : "text-muted"}`;
+    // 인증번호를 보냈습니다도 추가할 수 있게 변경
+    `text-sm ${/완료|사용 가능|보냈습니다/.test(message) ? "text-have font-bold" : "text-muted"}`; 
 
   return (
     <div className="mx-auto mt-4 max-w-[520px] rounded-card bg-surface p-8 shadow-card md:p-10">
@@ -202,6 +208,8 @@ export default function SignUpPage() {
 
         {/* 이메일 , 인증번호 요청 버튼 */}
         <div className={fieldClass}>
+        
+          
           <label htmlFor="signup-email" className={labelClass}>이메일</label>
 
           <div className={rowClass}>
@@ -213,7 +221,13 @@ export default function SignUpPage() {
             <button type="button" onClick={sendEmailCode} className={sideButton}>
               인증번호 받기
             </button>
+            
           </div>
+            {emailMessage && (
+          <p role="status" className={messageClass(emailMessage)}>
+            {emailMessage}
+          </p>
+          )}   
         </div>
 
         {/* 이메일 인증번호 입력 */}
@@ -235,7 +249,6 @@ export default function SignUpPage() {
               인증 확인
             </button>
           </div>
-          {emailMessage && <p role="status" className={messageClass(emailMessage)}>{emailMessage}</p>}
         </div>
 
         <div className={fieldClass}>
